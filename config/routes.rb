@@ -15,14 +15,20 @@ end
 TestR3::Application.routes.draw do
   # devise_for :users
   
-  constraints Test1 do
-    root :to => 'controller#action'
-  end
+  # constraints Test1 do
+  #   resources :topics
+  # end
+  # 
+  # constraints Test2 do
+  #   resources :topics
+  # end
   
-  constraints Test2 do
-    root :to => 'controller#action2'
-  end
+  scope "(:locale)" do
+    root :to => "topics#index"
+    resources :topics
+  end  
   
+  root :to => "topics#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
